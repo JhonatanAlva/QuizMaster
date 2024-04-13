@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="ov-btn-grow-ellipse" onclick="cerrarSesion()">
+        <i class='bx bx-exit'>Salir</i>
+      </button>
+
+      <dir></dir>
+      
+
+    <div id="usuario">Nombre de Usuario</div>
+
+
+    <div id="mainContainer">
+        <!-- Sidebar con categorías -->
+        <div id="sidebar">
+          <h2>Categorías</h2>
+          <ul>
+            <li><button class="ov-btn-slide-right" onclick="mostrarNiveles('categoria1')">Categoría 1</button></li>
+            <li><button class="ov-btn-slide-right" onclick="mostrarNiveles('categoria2')">Categoría 2</button></li>
+            <li><button class="ov-btn-slide-right" onclick="mostrarNiveles('categoria3')">Categoría 3</button></li>
+            <li><button class="ov-btn-slide-right" onclick="mostrarNiveles('categoria2')">Categoría 2</button></li>
+            <li><button class="ov-btn-slide-right" onclick="mostrarNiveles('categoria3')">Categoría 3</button></li>
+            <li><button class="ov-btn-slide-right" onclick="mostrarNiveles('categoria3')">Categoría 3</button></li>
+        </ul>        
+        </div>
+      
+        <!-- Marco central para niveles de dificultad y juego -->
+        <div id="centerFrame">
+            <div id="niveles">
+              <button class="ov-btn-grow-box" onclick="iniciarJuego('categoria1', 'Facil')">Fácil</button>
+              <button class="ov-btn-grow-box" onclick="iniciarJuego('categoria1', 'Intermedio')">Intermedio</button>
+              <button class="ov-btn-grow-box" onclick="iniciarJuego('categoria1', 'Dificil')">Difícil</button>
+            </div>
+            <div id="juego">
+              <!-- El juego se mostrará aquí -->
+              <div id="vidas">
+                <!-- Aquí se mostrarán las vidas -->
+              </div>
+            </div>
+          </div>
+          
+      </div>
+      <dir></dir>
+      <div id="footer">
+        Este es el pie de página.
+    </div>
+    
+      
+      <script src="script/sj/juego.js"></script>
+      <script src="script/sj/conf.js"></script>
+      
+</body>
+</html>
