@@ -11,7 +11,6 @@ firebase.initializeApp({
 
 window.addEventListener('DOMContentLoaded', () => {
     const db = firebase.firestore();
-    const formularioRegistro = document.querySelector(".forms");
     const buttonRegistrePregunta = document.getElementById("buttonRegistrePregunta");
 
     buttonRegistrePregunta.addEventListener("click", async (event) => {
@@ -46,5 +45,27 @@ window.addEventListener('DOMContentLoaded', () => {
             console.error("Error al añadir Pregunta: ", error);
             alert("Ocurrió un error al registrar el usuario. Por favor, inténtelo de nuevo.");
         }
+    });
+});
+
+const preguntasCollection = firebase.firestore().collection("Categorias");
+
+async function obtenerCategorias() {
+    const preguntasSnapshot = await preguntasCollection.get();
+    const categorias = new Set(); 
+    preguntasSnapshot.forEach(doc => {
+        categorias.add(doc.data().nameCategory); 
+    });
+    return Array.from(categorias); 
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+    const categoriesContainer = document.querySelector('.categories');
+    const categorias = await obtenerCategorias();
+    categorias.forEach(categoria => {
+        const categoryElement = document.createElement('div');
+        categoryElement.classList.add('category');
+        categoryElement.textContent = categoria;
+        categoriesContainer.appendChild(categoryElement);
     });
 });
