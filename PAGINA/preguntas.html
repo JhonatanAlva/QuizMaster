@@ -25,14 +25,15 @@
         <div id="sidebar">
           <h2>Categorías</h2>
           <ul>
-            <li><button class="ov-btn-slide-right" onclick="mostrarNiveles('categoria1')">Categoría 1</button></li>
-            <li><button class="ov-btn-slide-right" onclick="mostrarNiveles('categoria2')">Categoría 2</button></li>
-            <li><button class="ov-btn-slide-right" onclick="mostrarNiveles('categoria3')">Categoría 3</button></li>
-            <li><button class="ov-btn-slide-right" onclick="mostrarNiveles('categoria2')">Categoría 2</button></li>
-            <li><button class="ov-btn-slide-right" onclick="mostrarNiveles('categoria3')">Categoría 3</button></li>
-            <li><button class="ov-btn-slide-right" onclick="mostrarNiveles('categoria3')">Categoría 3</button></li>
-        </ul>        
-        </div>
+              <li><button class="ov-btn-slide-right" onclick="confirmarCambio('categoria1')">Categoría 1</button></li>
+              <li><button class="ov-btn-slide-right" onclick="confirmarCambio('categoria2')">Categoría 2</button></li>
+              <li><button class="ov-btn-slide-right" onclick="confirmarCambio('categoria3')">Categoría 3</button></li>
+              <li><button class="ov-btn-slide-right" onclick="confirmarCambio('categoria2')">Categoría 2</button></li>
+              <li><button class="ov-btn-slide-right" onclick="confirmarCambio('categoria3')">Categoría 3</button></li>
+              <li><button class="ov-btn-slide-right" onclick="confirmarCambio('categoria3')">Categoría 3</button></li>
+          </ul>        
+      </div>
+      
       
         <!-- Marco central para niveles de dificultad y juego -->
         <div id="centerFrame">
@@ -41,6 +42,7 @@
               <button class="ov-btn-grow-box" onclick="iniciarJuego('categoria1', 'Intermedio')">Intermedio</button>
               <button class="ov-btn-grow-box" onclick="iniciarJuego('categoria1', 'Dificil')">Difícil</button>
             </div>
+
             <div id="juego">
               <!-- El juego se mostrará aquí -->
               <div id="vidas">
