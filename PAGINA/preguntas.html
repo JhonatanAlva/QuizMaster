@@ -17,36 +17,25 @@
 
 <body>
 
-  <button id="ov-btn-grow-ellipse" onclick="cerrarSesion()">
-    <i class='bx bx-exit'>Salir</i>
+  <button class="exit" id="regresarLobby">
+    Salir
   </button>
-
-  <dir></dir>
-
 
   <div id="usuario">Nombre de Usuario</div>
 
+  <div id="centerFrame">
 
-  <div id="mainContainer">
-    <!-- Sidebar con categorías -->
-
-
-    <!-- Marco central para niveles de dificultad y juego -->
-    <div id="centerFrame">
-
-      <div id="juego">
-        <div id="preguntaContainer">
-          <h2 id="pregunta"></h2>
-          <div id="respuestas"></div>
-        </div>
+    <div id="juego">
+      <div class="vidas-container">
+        <img src="imagenes/corazon.jpg" alt="Corazón" class="corazon">
+        <p>Vidas: <span id="vidas">3</span></p>
       </div>
-
+      <div id="preguntaContainer">
+        <h2 id="pregunta"></h2>
+        <div id="respuestas"></div>
+      </div>
     </div>
 
   </div>
-  <dir></dir>
-
-
 </body>
-
 </html>

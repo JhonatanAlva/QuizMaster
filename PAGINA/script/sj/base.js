@@ -13,36 +13,47 @@ const preguntasCollection = firebase.firestore().collection("Preguntas");
 let preguntas = [];
 let preguntaIndex = 0;
 
-async function obtenerPreguntasAleatorias() {
-    const preguntasSnapshot = await preguntasCollection.limit(5).get();
-    preguntas = preguntasSnapshot.docs.map(doc => doc.data());
-    // Aleatorizar el orden de las preguntas
-    preguntas.sort(() => Math.random() - 0.5);
-    mostrarPregunta();
-}
 
 async function obtenerRespuestasIncorrectas() {
     const respuestasSnapshot = await preguntasCollection.get();
     const respuestas = respuestasSnapshot.docs.flatMap(doc => doc.data().Respuesta);
     return respuestas;
 }
+async function obtenerPreguntasAleatorias() {
+    const categoria = localStorage.getItem("categoria");
+    const dificultad = localStorage.getItem("dificultad");
+
+    console.log(categoria, dificultad);
+    const preguntasSnapshot = await preguntasCollection
+        .where("Categoria", "==", categoria)
+        .where("Dificultad", "==", dificultad)
+        .get();
+    preguntas = preguntasSnapshot.docs.map(doc => doc.data());
+    preguntas.sort(() => Math.random() - 0.5);
+    mostrarPregunta();
+}
+
+
 
 async function mostrarPregunta() {
     const preguntaContainer = document.getElementById('preguntaContainer');
     const pregunta = document.getElementById('pregunta');
     const respuestasContainer = document.getElementById('respuestas');
 
-    if (preguntaIndex < preguntas.length) {
+    if (preguntaIndex < 5) {
         const currentQuestion = preguntas[preguntaIndex];
         pregunta.textContent = currentQuestion.Pregunta;
-        respuestasContainer.innerHTML = ''; // Limpiar respuestas anteriores
-
-        // Obtener respuestas incorrectas y seleccionar 3 de ellas aleatoriamente
+        respuestasContainer.innerHTML = '';
         const respuestasIncorrectas = await obtenerRespuestasIncorrectas();
         const respuestas = [currentQuestion.Respuesta, ...respuestasIncorrectas];
+        const indexRespuestaCorrecta = respuestas.indexOf(currentQuestion.Respuesta);
+        if (indexRespuestaCorrecta !== -1) {
+            respuestas.splice(indexRespuestaCorrecta, 1);
+        }
+
         const respuestasAleatorias = obtenerMuestraAleatoria(respuestas, 3);
-        respuestasAleatorias.push(currentQuestion.Respuesta); // Agregar la respuesta correcta
-        respuestasAleatorias.sort(() => Math.random() - 0.5); // Aleatorizar el orden de las respuestas
+        respuestasAleatorias.push(currentQuestion.Respuesta);
+        respuestasAleatorias.sort(() => Math.random() - 0.5);
         respuestasAleatorias.forEach(respuesta => {
             const botonRespuesta = document.createElement('button');
             botonRespuesta.textContent = respuesta;
@@ -54,16 +65,20 @@ async function mostrarPregunta() {
                     mostrarPregunta();
                 } else {
                     // Respuesta incorrecta
+                    respuestaIncorrecta(); // Aquí llamamos a la función respuestaIncorrecta()
                     alert('Respuesta incorrecta. Intenta de nuevo.');
                 }
             };
             respuestasContainer.appendChild(botonRespuesta);
         });
+
     } else {
-        preguntaContainer.innerHTML = "<h2>Fin de las preguntas.</h2>";
+        alert("Fin del juego")
+        window.location.href = "/Lobby/index.html";
         return;
     }
 }
+
 
 function obtenerMuestraAleatoria(array, size) {
     const muestra = [];
@@ -78,3 +93,40 @@ function obtenerMuestraAleatoria(array, size) {
 window.addEventListener('DOMContentLoaded', async () => {
     await obtenerPreguntasAleatorias();
 });
+
+let vidas = 3;
+
+function actualizarVidas() {
+    document.getElementById('vidas').textContent = vidas;
+}
+
+function finDelJuego() {
+    alert('¡Fin del juego!');
+    window.location.href = "/Lobby/index.html"; // Redirigir al usuario al lobby
+}
+
+function respuestaCorrecta() {
+    console.log('Respuesta correcta');
+}
+
+function respuestaIncorrecta() {
+    vidas--;
+    actualizarVidas();
+
+    if (vidas === 0) {
+        finDelJuego();
+    }
+    console.log('Respuesta incorrecta');
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("regresarLobby").addEventListener("click", async (event) => {
+        event.preventDefault();
+        try {
+            window.location.href = "/Lobby/index.html";
+        } catch (error) {
+            console.error("Error al salir ", error);
+            alert("Ocurrió un error al cerrar sesión");
+        }
+    });
+  });
