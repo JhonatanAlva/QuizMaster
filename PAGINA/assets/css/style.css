@@ -1,0 +1,286 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #C6FFDD;
+    background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);  
+    background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+  }
+/*** ESTILOS BOTÓN GROW ELLIPSE ***/
+#ov-btn-grow-ellipse {
+  background: #fff; /* color de fondo */
+  color: #4741d7; /* color de fuente */
+  border: 2px solid #4741d7; /* tamaño y color de borde */
+  padding: 10px 10px;
+  border-radius: 3px; /* redondear bordes */
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  position: fixed;
+  top: 1px;
+  right: 10px;
+  z-index: 9999;
+}
+#ov-btn-grow-ellipse:hover {
+  color: #fff;/* color de fuente hover */
+}
+#ov-btn-grow-ellipse::after {
+  content: "";
+  background: #4741d7; /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 10px 10px;
+  display: block;
+  border-radius: 50%;
+  left: -50%;
+  right: -50%;
+  top: -150%;
+  bottom: -150%;
+  transform: scale(0, 0);
+  transition: all 0.4s ease;
+}
+#ov-btn-grow-ellipse:hover::after {
+  transition: all 0.6s ease-out;
+  transform: scale(1, 1);
+}
+/* Estilos para la barra de usuario */
+#userBar {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: right;
+  }
+  
+  /* Estilos para el marco del nombre de usuario */
+  #usuarioFrame {
+    border: 1px solid #f2f2f2;
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: inline-block;
+  }
+  
+  /* Estilos para el nombre de usuario */
+  #usuario {
+    display: inline-block;
+    margin-right: 120px;
+  }
+  
+  #mainContainer {
+    display: flex; /* Usar flexbox */
+  }
+  /* Estilos para el marco general de las categorías */
+  #sidebar {
+    border: 1px solid #701d1d;
+    background: #FFEFBA;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    width: fit-content; 
+    margin-top: 20px;
+  }
+  
+  /* Estilos para cada categoría */
+  #sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; 
+  }
+  
+  #sidebar li {
+    margin-bottom: 5px;
+  }
+  
+  #sidebar li a {
+    display: block;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  #sidebar li a:hover {
+    background-color: #e0e0e0;
+  }
+
+  /* Estilos para los elementos <li> dentro del sidebar */
+#sidebar ul li {
+  list-style: none; 
+  margin-bottom: 10px;
+  transition: background-color 0.3s linear;
+}
+
+/* Estilos para los enlaces dentro de los elementos <li> */
+#sidebar ul li a {
+  text-decoration: none; 
+  color: #333; 
+  display: block; 
+  padding: 10px; 
+  background-color: #ddd; 
+  border-radius: 5px;
+  transition: background-color 0.3s ease; 
+}
+
+#sidebar ul li a:hover {
+  background-color: #ccc;
+}
+
+/* Estilos para el marco central */
+#centerFrame {
+    flex: 1; 
+    padding: 20px;
+    background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #FFEFBA); 
+    border: 1px solid #701d1d;
+    height: 400px;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-top: 20px; 
+    clear: both; 
+    
+  }
+
+  /* Estilos para los corazones en el contenedor de vidas */
+#vidas {
+  font-size: 24px; 
+  color: red; 
+}
+
+/*** ESTILOS BOTÓN SLIDE RIGHT ***/
+.ov-btn-slide-right {
+  background: #fff; 
+  color: #4741d7; 
+  border: 2px solid #4741d7; 
+  padding: 16px 20px;
+  border-radius: 3px; 
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+}
+.ov-btn-slide-right:hover {
+  color: #fff; 
+}
+.ov-btn-slide-right::after {
+  content: "";
+  background: #4741d7; 
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  right: -100%;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+.ov-btn-slide-right:hover::after {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+
+.ov-btn-grow-box {
+  background: #fff; 
+  color: #5550cb; 
+  border: 2px solid #4187d7; 
+  padding: 16px 20px;
+  border-radius: 3px; 
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+}
+.ov-btn-grow-box:hover {
+  color: #fff;
+}
+.ov-btn-grow-box::after {
+  content: "";
+  background: #4741d7; 
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: scale(0, 0);
+  transition: all 0.3s ease;
+}
+.ov-btn-grow-box:hover::after {
+  transition: all 0.3s ease-out;
+  transform: scale(1, 1);
+}
+
+#footer {
+  background-color: #333; 
+  color: white; 
+  padding: 20px; 
+  text-align: center; 
+}
+#juego {
+  text-align: center;
+}
+
+#juego h2 {
+  color: #000000; 
+  margin-bottom: 20px; 
+}
+
+#juego button {
+  background-color: #007bff; 
+  color: white; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  margin: 5px; 
+  cursor: pointer; 
+}
+
+#juego button:hover {
+  background-color: #0056b3; 
+}
+
+progress[value] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: none;
+	width: 470px;
+	height: 30px;
+	overflow:hidden;
+	background-color:#D8D8D8;
+	border-radius : 20px ; 
+}
+
+.progress{
+	margin-right:30px;
+	margin-bottom:20px;
+}
+
+.progress span{
+	font-weight:bold;
+}
+progress::-moz-progress-bar{ 
+	background: #FF8000;
+	background: rgba(255,175,75,1);
+	border-radius : 20px ; 
+} 
+progress::-webkit-progress-bar { 
+	background-color:#D8D8D8;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+	border-radius : 20px ; 
+		
+	
+}

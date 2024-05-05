@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="script/sj/juego.js"></script>
+    <script src="script/sj/conf.js"></script>
+    <script src="script/sj/base.js"></script>
+    <title>Document</title>
+  </head>
+
+  <body>
+    <button id="ov-btn-grow-ellipse" onclick="cerrarSesion()">
+      <i class="bx bx-exit">Salir</i>
+    </button>
+
+    <div id="usuario">Nombre de Usuario</div>
+    
+    <div class="progress">
+      <progress id="progress" max="100" value="0"></progress>
+      <span></span>
+    </div>
+
+    <div id="mainContainer">
+      <div id="centerFrame">
+        <div id="juego">
+          <div id="preguntaContainer">
+            <h2 id="pregunta"></h2>
+            <div id="respuestas"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
