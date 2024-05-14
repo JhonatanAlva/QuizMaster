@@ -9,26 +9,30 @@
 	<link rel="stylesheet" href="estilos.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"> 
-	<link rel="stylesheet" href="uno.css">
-	<link rel="stylesheet" href="dos.css">
-	<link rel="stylesheet" href="tres.css">
-	<link rel="stylesheet" href="cuatro.css">
-	<link rel="stylesheet" href="cinco.css">
-	<link rel="stylesheet" href="seis.css">
+	<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="button.css">
+	<link rel="stylesheet" href="aud.css">
+
 	<title>Lobby Quiz Master</title>
 	<script src="script.js"></script>
 </head>
 <body>
 	<div class="salir">
 		<button class="exit" id="regresarLobby">
-			Salir
+			<i class="bx bx-exit">Salir</i>
 		</button>
 	</div>
+	<div id="name-player" class="name-players"><h1></h1></div>
+	<div id="totalFichas" class="fichasplayer">
+		<img src="/Lobby/img/dolar.png" alt="" height="30" >
+		<p id="fichas-cantidad"> </p>
+		<button id="add-fichas" type="button" class="btn btn-success">+</button>
+	</div>
+	<audio id="audio" src="/Lobby/aud/beta.mp3" loop></audio>
+  	<button class="audButton" id="toggleButton"><img id="controller-aud" src="/Lobby/img/volume-full-regular-24.png" alt=""></button>
+	<div class="contenedor">
 
-	<audio controls autoplay>
-		<source src="" type="audio/mpeg">
-	</audio>
 	<div class="contenedor">
 		<h1>QUIZ MASTER</h1>
 
@@ -83,7 +87,7 @@
             <h2>Selecciona la dificultad:</h2>
 			<button id="cerrarModal">X</button>
             <button class="dificultad" id="Facil">Fácil</button>
-            <button class="dificultad" id="Intermedio">Intermedio</button>
+            <button class="dificultad" id="Intermedia">Intermedio</button>
             <button class="dificultad" id="Dificil">Difícil</button>
         </div>
     </div>

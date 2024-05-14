@@ -21,8 +21,8 @@
             <div class="navbar-nav">
               <a class="nav-link active" aria-current="page" href="#">Inicio</a>
               <a class="nav-link" href="/Control/PanelControl/PanelControl.html">Ingresar preguntas</a>
-              <a class="nav-link" href="#">Ingresar Categoría</a>
               <a class="nav-link" href="/Control/MostrarPreguntas/listadoPreguntas.html">Listar preguntas categoria</a>
+              <a class="nav-link" href="/LoginQuiz/loginQuiz.html">Salir</a>
             </div>
           </div>
         </div>
@@ -31,7 +31,9 @@
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
               <form class="d-flex" id="searchForm">
-                <input class="form-control me-2" id="buscadorCategoria" type="search" placeholder="Categoria" aria-label="Search">
+                <select class="form-select me-2" id="buscadorCategoria" aria-label="Categoría">
+                  <option value="" selected>Selecciona una categoría...</option>
+              </select>
                 <input class="form-control me-2" id="buscadorDificultad" type="search" placeholder="Dificultad" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Buscar</button>
               </form>
@@ -45,6 +47,7 @@
                     <th>Pregunta</th>
                     <th>Respuesta</th>
                     <th>Categoría</th>
+                    <th>Subcategoría</th>
                     <th>Dificultad</th>
                     <th>Acciones</th> 
                 </tr>
@@ -53,6 +56,27 @@
                 
             </tbody>
         </table>
-    </div>   
+    </div> 
+    <div id="modalModificar" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="cerrarModal()">&times;</span>
+        <h2>Modificar Pregunta</h2>
+        <form class="forms" id="formModificar" onsubmit="guardarCambios(event)">
+          <label for="preguntaInput">Pregunta:</label>
+          <input type="text" id="preguntaInput" name="preguntaInput">
+          <label for="respuestaInput">Respuesta:</label>
+          <input type="text" id="respuestaInput" name="respuestaInput">
+          <label for="categoriaInput">Categoría:</label>
+          <input type="text" id="categoriaInput" name="categoriaInput">
+          <label for="subcategoriaInput">Subcategoría:</label>
+          <input type="text" id="subcategoriaInput" name="subcategoriaInput">
+          <label for="dificultadInput">Dificultad:</label>
+          <input type="text" id="dificultadInput" name="dificultadInput">
+          <button class="btn btn-success" type="submit">Guardar</button>
+          <button class="btn btn-danger" type="button" onclick="cerrarModal()">Cancelar</button>
+        </form>
+      </div>
+    </div>
+      
 </body>
 </html>
