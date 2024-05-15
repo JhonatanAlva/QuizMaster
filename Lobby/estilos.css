@@ -9,11 +9,12 @@ body {
 	background-image: url("img/fondo2.jpeg");
 	font-family: 'Bauhaus 93', sans-serif;
 	min-height: 100vh;
-	background-size: 1350px;
     background-repeat: no-repeat;
     background-attachment: fixed;
     margin: 0;
     padding: 0;
+	background-size: cover;
+    background-position: center; 
 }
 
 .contenedor {
@@ -153,10 +154,11 @@ h1 {
 .name-players{
 	position: fixed;
 	padding: 10px ;
-	top: 20px;
+	top: 2px;
 	left: 10px;
-	font-size: 30px;
-	color: #2f70e9;
+	font-size: 20px;
+	color: #52175e;
+  background: linear-gradient(to right, #FFFFFF, #FFEFBA); 
 	border: 2px solid #055dff;
 	border-radius: 10px;
 }
@@ -165,7 +167,8 @@ h1 {
 .fichasplayer {
 	display: inline-flex; 
 	padding: 10px;
-	border: 2px solid #ff8800;
+	background: linear-gradient(to right, #FFFFFF, #FFEFBA); 
+	border: 2px solid #000000;
 	border-radius: 10px;
 	position: fixed;
 	top: 20px;
@@ -181,7 +184,7 @@ h1 {
 #totalFichas p {
 	margin-right: 10px;
 	margin-bottom: 0;
-	color: #f8cb4e;
+	color: #161616;
 }
 #totalFichas button {
 	padding: 3px 5px;
