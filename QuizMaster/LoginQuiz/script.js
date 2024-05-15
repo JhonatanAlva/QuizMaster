@@ -48,7 +48,8 @@ document.getElementById("buttonRegistre").addEventListener("click", async (event
             NameUser: nombreUsuario,
             Correo: correoElectronico,
             Password: password,
-            Edad: edad
+            Edad: edad,
+            fichas: 10
         });
         alert("Usuario registrado con éxito");
         document.getElementById("nameUserRegist").value = "";
@@ -69,6 +70,7 @@ document.getElementById("buttonInciar").addEventListener("click", async (event) 
     event.preventDefault();
     const userNameLogin = document.getElementById("nameUserLogin").value;
     const passwordLogin = document.getElementById("password-login").value;
+    localStorage.setItem("nameUserLogi", userNameLogin);
 
     try {
         const querySnapshot = await db.collection("User").where("NameUser", "==", userNameLogin).where("Password", "==", passwordLogin).get();
