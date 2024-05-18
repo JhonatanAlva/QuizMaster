@@ -1,0 +1,188 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	
+}
+
+body {
+	background-image: url("img/fondo2.jpeg");
+	font-family: 'Bauhaus 93', sans-serif;
+	min-height: 100vh;
+	background-size: 1350px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor {
+	width: 1200px;
+	margin: auto;
+	padding: 100px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+h1 {
+	font-size: 58px;
+	font-weight: 500;
+	text-align: center;
+	margin-bottom: 80px;
+	text-transform: uppercase;
+	color: #141414;
+	border: 5px solid #141414;
+	padding: 5px 10px;
+	display: inline-block;
+	background: #ff8a05;
+	background-image: url("img/nar.jpg");
+	
+}
+
+.contenedor-botones {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 40px;
+}
+
+.boton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 80px;
+	background: #141414;
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	font-weight: 500;
+	border: none;
+	cursor: pointer;
+	text-transform: uppercase;
+	transition: .3s ease all;
+	border-radius: 5px;
+	position: relative;
+	overflow: hidden;
+}
+
+.boton span {
+	position: relative;
+	z-index: 2;
+	transition: .3s ease all;
+}
+.exit{
+	background-color: #f8cb4e;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    padding: 15px 8px;
+    cursor: pointer
+}
+
+.exit {
+	position: fixed;
+	top: 20px;
+	right: 10px; 
+  }
+
+.exit:hover{
+	background-color: #f10202;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    padding: 15px 8px;
+    cursor: pointer
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-contenido {
+    background-color: white;
+    margin: 20% auto;
+    padding: 20px;
+    width: 60%;
+    text-align: center;
+    position: relative; 
+}
+
+#cerrarModal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: #ff0000;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.dificultad {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#Facil {
+    background-color: #007bff; /* Azul */
+}
+
+#Intermedio {
+    background-color: #28a745; /* Verde */
+}
+
+#Dificil {
+    background-color: #dc3545; /* Rojo */
+}
+
+.dificultad:hover {
+    opacity: 0.8;
+}
+
+.name-players{
+	position: fixed;
+	padding: 10px ;
+	top: 20px;
+	left: 10px;
+	font-size: 30px;
+	color: #2f70e9;
+	border: 2px solid #055dff;
+	border-radius: 10px;
+}
+
+
+.fichasplayer {
+	display: inline-flex; 
+	padding: 10px;
+	border: 2px solid #ff8800;
+	border-radius: 10px;
+	position: fixed;
+	top: 20px;
+	right: 150px; 
+	align-items: center; 
+	
+}
+
+#totalFichas img {
+	margin-right: 5px; 
+}
+
+#totalFichas p {
+	margin-right: 10px;
+	margin-bottom: 0;
+	color: #f8cb4e;
+}
+#totalFichas button {
+	padding: 3px 5px;
+}

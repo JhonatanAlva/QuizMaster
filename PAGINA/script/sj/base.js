@@ -9,73 +9,114 @@ firebase.initializeApp({
     measurementId: "G-FQSP9SF6PM"
 });
 
+const db = firebase.firestore();
+
+function incrementarBarraDeProgreso() {
+    const barraDeProgreso = document.getElementById('progress');
+    let valorActual = parseInt(barraDeProgreso.getAttribute('value'));
+    valorActual += 20;
+    if (valorActual > 100) {
+      valorActual = 100;
+    }
+    barraDeProgreso.setAttribute('value', valorActual);
+}
+function mostrarNombreUsuario(nombreUsuario) {
+    document.getElementById("usuario").innerText = nombreUsuario
+  }
+  var nombreUsuario =  localStorage.getItem("nameUserLogi");
+
+  window.addEventListener("DOMContentLoaded", function() {
+    mostrarNombreUsuario(nombreUsuario)
+});
+  
 const preguntasCollection = firebase.firestore().collection("Preguntas");
 let preguntas = [];
 let preguntaIndex = 0;
 
 
-async function obtenerRespuestasIncorrectas() {
-    const respuestasSnapshot = await preguntasCollection.get();
+async function obtenerRespuestasIncorrectas(categoria) {
+    const ctR = localStorage.getItem("categoria");
+    const dfR = localStorage.getItem("dificultad");
+    const respuestasSnapshot = await preguntasCollection.where("Categoria", "==", ctR)
+                                                        .where("Dificultad", "==", dfR)
+                                                        .get();
     const respuestas = respuestasSnapshot.docs.flatMap(doc => doc.data().Respuesta);
     return respuestas;
 }
 async function obtenerPreguntasAleatorias() {
     const categoria = localStorage.getItem("categoria");
     const dificultad = localStorage.getItem("dificultad");
-
     console.log(categoria, dificultad);
     const preguntasSnapshot = await preguntasCollection
         .where("Categoria", "==", categoria)
         .where("Dificultad", "==", dificultad)
-        .get();
+        .get(); 
     preguntas = preguntasSnapshot.docs.map(doc => doc.data());
     preguntas.sort(() => Math.random() - 0.5);
     mostrarPregunta();
 }
 
+// Definimos las variables globales para contar las respuestas correctas e incorrectas
+let respCorrectConteo = 0;
+let respIncorrectConteo = 0;
 
-
+// Función para mostrar la pregunta
 async function mostrarPregunta() {
     const preguntaContainer = document.getElementById('preguntaContainer');
     const pregunta = document.getElementById('pregunta');
     const respuestasContainer = document.getElementById('respuestas');
-
-    if (preguntaIndex < 5) {
+    
+    
+    // Verificamos si la pregunta actual es menor que 5
+    if (preguntaIndex < 5) { 
+        // Obtenemos la pregunta actual
         const currentQuestion = preguntas[preguntaIndex];
         pregunta.textContent = currentQuestion.Pregunta;
-        respuestasContainer.innerHTML = '';
+        respuestasContainer.innerHTML = ''; 
+        
+        // Obtenemos las respuestas incorrectas de forma asíncrona
         const respuestasIncorrectas = await obtenerRespuestasIncorrectas();
         const respuestas = [currentQuestion.Respuesta, ...respuestasIncorrectas];
         const indexRespuestaCorrecta = respuestas.indexOf(currentQuestion.Respuesta);
         if (indexRespuestaCorrecta !== -1) {
             respuestas.splice(indexRespuestaCorrecta, 1);
         }
-
+        
+        // Elegimos aleatoriamente 3 respuestas incorrectas
         const respuestasAleatorias = obtenerMuestraAleatoria(respuestas, 3);
-        respuestasAleatorias.push(currentQuestion.Respuesta);
-        respuestasAleatorias.sort(() => Math.random() - 0.5);
+        respuestasAleatorias.push(currentQuestion.Respuesta); 
+        respuestasAleatorias.sort(() => Math.random() - 0.5); 
         respuestasAleatorias.forEach(respuesta => {
             const botonRespuesta = document.createElement('button');
             botonRespuesta.textContent = respuesta;
             botonRespuesta.classList.add('btn', 'btn-primary', 'me-2');
             botonRespuesta.onclick = function () {
                 if (respuesta === currentQuestion.Respuesta) {
-                    // Respuesta correcta, avanzar a la siguiente pregunta
                     preguntaIndex++;
+                    respCorrectConteo++;
                     mostrarPregunta();
+                    incrementarBarraDeProgreso();
                 } else {
-                    // Respuesta incorrecta
-                    respuestaIncorrecta(); // Aquí llamamos a la función respuestaIncorrecta()
-                    alert('Respuesta incorrecta. Intenta de nuevo.');
+                    preguntaIndex++;
+                    respIncorrectConteo++;
+                    alert('Respuesta incorrecta');
+                    mostrarPregunta();
+                    incrementarBarraDeProgreso();
                 }
             };
             respuestasContainer.appendChild(botonRespuesta);
         });
 
     } else {
-        alert("Fin del juego")
-        window.location.href = "/Lobby/index.html";
-        return;
+       
+        if(respCorrectConteo == 3 ){
+            const fichasTotal = 30;
+            addFichas(fichasTotal);
+        }
+        if(respCorrectConteo > 3){
+            addFichas(50);
+        }
+        alert("Fin del juego");
     }
 }
 
@@ -93,40 +134,66 @@ function obtenerMuestraAleatoria(array, size) {
 window.addEventListener('DOMContentLoaded', async () => {
     await obtenerPreguntasAleatorias();
 });
-
-let vidas = 3;
-
-function actualizarVidas() {
-    document.getElementById('vidas').textContent = vidas;
-}
-
-function finDelJuego() {
-    alert('¡Fin del juego!');
-    window.location.href = "/Lobby/index.html"; // Redirigir al usuario al lobby
-}
-
-function respuestaCorrecta() {
-    console.log('Respuesta correcta');
-}
-
-function respuestaIncorrecta() {
-    vidas--;
-    actualizarVidas();
-
-    if (vidas === 0) {
-        finDelJuego();
-    }
-    console.log('Respuesta incorrecta');
-}
-
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("regresarLobby").addEventListener("click", async (event) => {
-        event.preventDefault();
-        try {
-            window.location.href = "/Lobby/index.html";
-        } catch (error) {
-            console.error("Error al salir ", error);
-            alert("Ocurrió un error al cerrar sesión");
-        }
+    const nombreUsuario =  localStorage.getItem("nameUserLogi");
+    const btnAddFichas = document.getElementById("add-fichas");
+
+    btnAddFichas.addEventListener("click", function() {
+    mostrarMensajeFlotante("Para conseguir más monedas, responde correctamente todas las preguntas ");
     });
-  });
+
+    function mostrarMensajeFlotante(mensaje) {
+        alert(mensaje)
+    }
+    const querySnapshotNameUser = db.collection("User")
+    .where("NameUser", "==", nombreUsuario)
+    .get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            const userData = doc.data();
+            const fichas = userData.fichas;
+            document.getElementById("fichas-cantidad").textContent = fichas;
+        });
+    })
+    .catch((error) => {
+        const errorFichas = 0;
+        document.getElementById("fichas-cantidad").textContent = errorFichas;
+    });
+});
+async function getUserData() {
+    try {
+        const nombreUsuario = localStorage.getItem("nameUserLogi");
+        const querySnapshot = await db.collection("User").where("NameUser", "==", nombreUsuario).get();
+        if (querySnapshot.empty) {
+            throw new Error("Usuario no encontrado");
+        }
+        const userData = {};
+        querySnapshot.forEach(doc => {
+            userData.id = doc.id;
+            Object.assign(userData, doc.data());
+        });
+        return userData;
+    } catch (error) {
+        console.error("Error al obtener datos del usuario: ", error);
+        throw error;
+    }
+}
+
+async function addFichas(fichasToAdd) {
+    try {
+        const nombreUsuario = localStorage.getItem("nameUserLogi");
+        const userData = await getUserData(nombreUsuario);
+        const updateFichas = userData.fichas + fichasToAdd;
+        await db.collection("User").doc(userData.id).update({
+            fichas: updateFichas
+        });
+
+        console.log("Fichas actualizadas con éxito para el usuario", nombreUsuario);
+        window.location.href = "/Lobby/index.html";
+    } catch (error) {
+        console.error("Error al agregar fichas: ", error);
+        throw error;
+    }
+}
+
+
