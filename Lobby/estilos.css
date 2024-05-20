@@ -9,23 +9,29 @@ body {
 	background-image: url("img/fondo2.jpeg");
 	font-family: 'Bauhaus 93', sans-serif;
 	min-height: 100vh;
-	background-size: 1350px;
     background-repeat: no-repeat;
     background-attachment: fixed;
     margin: 0;
     padding: 0;
+	background-size: cover;
+    background-position: center; 
 }
 
 .contenedor {
-	width: 1200px;
+	text-align: center;
+  	padding: 20px;
+	align-items: center;
+	margin-top: 20px;
+}
+.contenedores {
+	width: 100%;
+	max-width: 1200px;
 	margin: auto;
-	padding: 100px 0;
+	padding: 50px 20px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
 }
-
 h1 {
 	font-size: 58px;
 	font-weight: 500;
@@ -45,8 +51,32 @@ h1 {
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 40px;
+	gap: 20px;
 }
+.modorandom{
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+.modorandom span{
+	transition: .4s ease-in-out all;
+	position: absolute;
+	left: 40%;
+	color: #fff;
+	width: 35px;
+}
+.modorandom button{
+	height: 85px;
+	width: 255px;
+}
+.modorandom button:hover{
+	background: #9fff05;
+	height: 85px;
+	width: 255px;
+}
+
 
 .boton {
 	display: inline-flex;
@@ -155,8 +185,9 @@ h1 {
 	padding: 10px ;
 	top: 20px;
 	left: 10px;
-	font-size: 30px;
-	color: #2f70e9;
+	font-size: 20px;
+	color: #52175e;
+  	background: linear-gradient(to right, #FFFFFF, #FFEFBA); 
 	border: 2px solid #055dff;
 	border-radius: 10px;
 }
@@ -165,7 +196,8 @@ h1 {
 .fichasplayer {
 	display: inline-flex; 
 	padding: 10px;
-	border: 2px solid #ff8800;
+	background: linear-gradient(to right, #FFFFFF, #FFEFBA); 
+	border: 2px solid #000000;
 	border-radius: 10px;
 	position: fixed;
 	top: 20px;
@@ -181,7 +213,7 @@ h1 {
 #totalFichas p {
 	margin-right: 10px;
 	margin-bottom: 0;
-	color: #f8cb4e;
+	color: #161616;
 }
 #totalFichas button {
 	padding: 3px 5px;
