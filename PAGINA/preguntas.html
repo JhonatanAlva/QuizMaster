@@ -19,7 +19,9 @@
   <button class="ov-btn-grow-ellipse" id="regresarLobby">
     Volver
   </button>
-
+  <audio id="audio" src="/Lobby/aud/beta.mp3" loop></audio>
+  <button class="audButton" id="toggleButton"><img id="controller-aud" src="/Lobby/img/volume-full-regular-24.png"
+    alt=""></button>
   <div id="usuario" class="name-player"></div>
   <div id="totalFichas" class="fichasplayer">
     <img src="/Lobby/img/dolar.png" alt="" height="30">
@@ -31,7 +33,7 @@
     <div id="juego">
       <div class="vidas-container">
         <img src="imagenes/corazon.jpg" alt="Corazón" class="corazon">
-        Vidas:<span id="vidas">3</span>
+        Vidas:<span id="vidas">4</span>
       </div>
       <div id="preguntaContainer">
         <h2 id="pregunta"></h2>
@@ -43,6 +45,22 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-contenido">
+      <button id="cerrarModal">X</button>
+      <h1>Puntuacion obtenida</h1>
+      <div class="text">
+        <p id="rcorrectas">Correctas: </p>
+      <p id="rincorrectas">Incorrectas: </p>
+      </div>
+      <div class="conteoRes">
+        <p id="correctas"></p>
+        <p id="incorrectas"></p>
+      </div>
+      <button class="gameover" id="GAMEOVER">Fin del juego</button>
     </div>
   </div>
   

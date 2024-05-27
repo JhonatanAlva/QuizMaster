@@ -95,13 +95,13 @@ body {
 }
 
 .progress-container {
-  position: absolute; /* Use absolute positioning to stay within the parent container */
-  bottom: 50px; /* Adjust this value as needed */
+  position: absolute; 
+  bottom: 50px; 
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   display: flex;
-  justify-content: center; /* Center the progress bar horizontally */
+  justify-content: center;
 }
 
 .progress {
@@ -160,7 +160,7 @@ progress::-webkit-progress-value {
 	border-radius: 10px;
 	position: fixed;
 	top: 2px;
-	right: 100px; 
+	right: 150px; 
 	align-items: center; 
 }
 
@@ -177,9 +177,9 @@ progress::-webkit-progress-value {
 }
 
 .vidas-container {
-  position: absolute; /* Cambiado a absolute para que se posicione relativo al contenedor */
-  bottom: 20px; /* Posición en la parte inferior */
-  right: 20px; /* Posición en la parte derecha */
+  position: absolute; 
+  bottom: 20px; 
+  right: 20px; 
   display: flex;
   align-items: center;
   color: #333;
@@ -190,3 +190,82 @@ progress::-webkit-progress-value {
   height: auto;
   margin-right: 5px;
 }
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-contenido {
+  background-color: white;
+  margin: 20% auto;
+  padding: 20px;
+  width: 60%;
+  text-align: center;
+  position: relative;
+}
+
+#cerrarModal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  color: #ff0000;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#GAMEOVER {
+  background-color: #ff0000;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.text, .conteoRes {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.text > p, .conteoRes > p {
+  margin: 0;
+  flex: 1;
+}
+
+#correctas {
+  background-color: rgb(13, 207, 13);
+  padding: 5px;
+}
+
+#incorrectas {
+  background-color: rgb(236, 22, 22);
+  padding: 5px;
+}
+
+.audButton {
+	padding: 15px 15px;
+	font-size: 16px;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	background-color: #f8cb4e;
+	color: white;
+  }
+  
+.audButton {
+    position: fixed;
+    top: 3px;
+    right: 88px;
+}
+.audButton:hover {
+	background-color: #fab908;
+  }

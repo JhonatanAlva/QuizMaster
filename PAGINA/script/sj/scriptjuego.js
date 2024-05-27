@@ -11,15 +11,15 @@ firebase.initializeApp({
 
 const db = firebase.firestore();
 
-let vidas = 3;
+let vidas = 4;
 
 function actualizarVidas() {
   document.getElementById('vidas').textContent = vidas;
 }
 
 function finDelJuego() {
-  alert('¡Fin del juego!');
-  window.location.href = "/Lobby/index.html"; // Redirigir al usuario al lobby
+  alert('¡Fin del juego te quedaste sin vidas!');
+  window.location.href = "/Lobby/index.html"; 
 }
 
 function respuestaCorrecta() {
@@ -33,7 +33,6 @@ function respuestaIncorrecta() {
   if (vidas === 0) {
     finDelJuego();
   }
-  console.log('Respuesta incorrecta');
 }
 
 function incrementarBarraDeProgreso() {
@@ -115,32 +114,24 @@ async function obtenerPreguntasAleatorias() {
   }
 }
 
-// Definimos las variables globales para contar las respuestas correctas e incorrectas
 let respCorrectConteo = 0;
 let respIncorrectConteo = 0;
 
-// Función para mostrar la pregunta
 async function mostrarPregunta() {
   const preguntaContainer = document.getElementById('preguntaContainer');
   const pregunta = document.getElementById('pregunta');
   const respuestasContainer = document.getElementById('respuestas');
 
-  // Verificamos si la pregunta actual es menor que 5
   if (preguntaIndex < limitPregunta) {
-    // Obtenemos la pregunta actual
     const currentQuestion = preguntas[preguntaIndex];
     pregunta.textContent = currentQuestion.Pregunta;
     respuestasContainer.innerHTML = '';
-
-    // Obtenemos las respuestas incorrectas de forma asíncrona
     const respuestasIncorrectas = await obtenerRespuestasIncorrectas();
     const respuestas = [currentQuestion.Respuesta, ...respuestasIncorrectas];
     const indexRespuestaCorrecta = respuestas.indexOf(currentQuestion.Respuesta);
     if (indexRespuestaCorrecta !== -1) {
       respuestas.splice(indexRespuestaCorrecta, 1);
     }
-
-    // Elegimos aleatoriamente 3 respuestas incorrectas
     const respuestasAleatorias = obtenerMuestraAleatoria(respuestas, 3);
     respuestasAleatorias.push(currentQuestion.Respuesta);
     respuestasAleatorias.sort(() => Math.random() - 0.5);
@@ -159,7 +150,6 @@ async function mostrarPregunta() {
           preguntaIndex++;
           respIncorrectConteo++;
           respuestaIncorrecta();
-          alert('Respuesta incorrecta');
           mostrarPregunta();
           incrementarBarraDeProgreso();
         }
@@ -175,7 +165,7 @@ async function mostrarPregunta() {
     if (respCorrectConteo > 3) {
       addFichas(50);
     }
-    alert("Fin del juego");
+    mostrarModal(respCorrectConteo, respIncorrectConteo);
   }
 }
 
@@ -249,7 +239,6 @@ async function addFichas(fichasToAdd) {
     });
 
     console.log("Fichas actualizadas con éxito para el usuario", nombreUsuario);
-    window.location.href = "/Lobby/index.html";
   } catch (error) {
     console.error("Error al agregar fichas: ", error);
     throw error;
@@ -265,5 +254,35 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error al salir ", error);
       alert("Ocurrió un error al cerrar sesión");
     }
+  });
+  const audio = document.getElementById("audio");
+    audio.play();
+    const toggleButton = document.getElementById("toggleButton");
+    const ico = document.getElementById("controller-aud");
+
+    toggleButton.addEventListener("click", function () {
+        if (audio.paused) {
+        audio.play();
+        ico.src = "/Lobby/img/volume-full-regular-24.png"
+        } else {
+        audio.pause();
+        ico.src = "/Lobby/img/volume-mute-regular-24.png"
+        }
+    });
+});
+function mostrarModal(respCorrectConteo, respIncorrectConteo) {
+  document.getElementById("correctas").textContent = respCorrectConteo;
+  document.getElementById("incorrectas").textContent = respIncorrectConteo;
+  document.getElementById("modal").style.display = "block";
+}
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("GAMEOVER").addEventListener("click", function() {
+      document.getElementById("modal").style.display = "none";
+      window.location.href = "/Lobby/index.html";
+  });
+  
+  document.getElementById("cerrarModal").addEventListener("click", function() {
+      document.getElementById("modal").style.display = "none";
+      window.location.href = "/Lobby/index.html";
   });
 });
