@@ -93,6 +93,52 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("modal").style.display = "none";
     });
 });
+document.addEventListener("DOMContentLoaded", function() {
+    // Mostrar el modal de sugerencias al hacer clic en el botón correspondiente
+    document.getElementById("sugModal").addEventListener("click", function() {
+        document.getElementById("modalSug").style.display = "block";
+    });
+
+    // Cerrar el modal de sugerencias al hacer clic en el botón de cierre
+    document.getElementById("cerrarModalSug").addEventListener("click", function() {
+        document.getElementById("modalSug").style.display = "none";
+    });
+
+    // Guardar la pregunta sugerida en Firestore al hacer clic en el botón de guardar
+    document.getElementById("buttonRegistrePregunta").addEventListener("click", function() {
+        const pregunta = document.getElementById("preguntarregis").value;
+        const respuesta = document.getElementById("respuestaregis").value;
+        const categoria = document.getElementById("categoria").value;
+        const subcategoria = document.getElementById("subcategoria").value;
+        const dificultad = document.getElementById("niveldificultadregis").value;
+
+        // Guardar en Firestore
+        db.collection("SugerPreguntas").add({
+            Pregunta: pregunta,
+            Respuesta: respuesta,
+            Categoria: categoria,
+            SubCategoria: subcategoria,
+            Dificultad: dificultad
+        })
+        .then(function(docRef) {
+            console.log("Pregunta sugerida guardada con ID: ", docRef.id);
+            // Restablecer los campos del formulario
+            document.getElementById("preguntarregis").value = "";
+            document.getElementById("respuestaregis").value = "";
+            document.getElementById("categoria").value = "";
+            document.getElementById("subcategoria").value = "";
+            document.getElementById("niveldificultadregis").value = "";
+            // Cerrar el modal
+            document.getElementById("modalSug").style.display = "none";
+            // Mostrar un mensaje de éxito o realizar alguna otra acción si es necesario
+        })
+        .catch(function(error) {
+            console.error("Error al agregar la pregunta sugerida: ", error);
+            // Manejar el error adecuadamente, como mostrar un mensaje de error al usuario
+        });
+    });
+});
+
 
 
 

@@ -77,7 +77,7 @@ document.getElementById("buttonInciar").addEventListener("click", async (event) 
 
         if (!querySnapshot.empty) {
             if (userNameLogin === "Admin") { 
-                window.location.href = "/Control/PanelControl/PanelControl.html";
+                window.location.href = "/Control/InicioControl/control.html";
             } else {
                 window.location.href = "/Lobby/index.html";
             }

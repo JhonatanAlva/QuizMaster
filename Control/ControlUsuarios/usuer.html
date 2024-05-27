@@ -12,7 +12,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-    <title>Preguntas</title>
+    <title>Usuarios</title>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-center">
@@ -33,28 +33,24 @@
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
               <form class="d-flex" id="searchForm">
-                <select class="form-select me-2" id="buscadorCategoria" aria-label="Categoría">
-                  <option value="" selected>Selecciona una categoría...</option>
-              </select>
-                <input class="form-control me-2" id="buscadorDificultad" type="search" placeholder="Dificultad" aria-label="Search">
+                <input class="form-control me-2" id="buscarNameUser" type="search" placeholder="Nombre Usuario" aria-label="Username">
                 <button class="btn btn-outline-success" type="submit">Buscar</button>
               </form>
             </div>
           </nav>
     </div>
-    <div class="forms-pregunt">
+    <div class="forms-user">
         <table>
             <thead>
                 <tr>
-                    <th>Pregunta</th>
-                    <th>Respuesta</th>
-                    <th>Categoría</th>
-                    <th>Subcategoría</th>
-                    <th>Dificultad</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Edad</th>
+                    <th>Fichas</th>
                     <th>Acciones</th> 
                 </tr>
             </thead>
-            <tbody class="preguntas">
+            <tbody class="userList">
                 
             </tbody>
         </table>
@@ -64,16 +60,14 @@
         <span class="close" onclick="cerrarModal()">&times;</span>
         <h2>Modificar Pregunta</h2>
         <form class="forms" id="formModificar" onsubmit="guardarCambios(event)">
-          <label for="preguntaInput">Pregunta:</label>
-          <input type="text" id="preguntaInput" name="preguntaInput">
-          <label for="respuestaInput">Respuesta:</label>
-          <input type="text" id="respuestaInput" name="respuestaInput">
-          <label for="categoriaInput">Categoría:</label>
-          <input type="text" id="categoriaInput" name="categoriaInput">
-          <label for="subcategoriaInput">Subcategoría:</label>
-          <input type="text" id="subcategoriaInput" name="subcategoriaInput">
-          <label for="dificultadInput">Dificultad:</label>
-          <input type="text" id="dificultadInput" name="dificultadInput">
+          <label for="preguntaInput">Nombre:</label>
+          <input type="text" id="nameUser" name="nameUser">
+          <label for="respuestaInput">Correo:</label>
+          <input type="text" id="correoUser" name="correoUser">
+          <label for="categoriaInput">Edad:</label>
+          <input type="text" id="edaduser" name="edaduser">
+          <label for="subcategoriaInput">Fichas:</label>
+          <input type="text" id="fichasuser" name="fichasuser">
           <button class="btn btn-success" type="submit">Guardar</button>
           <button class="btn btn-danger" type="button" onclick="cerrarModal()">Cancelar</button>
         </form>
