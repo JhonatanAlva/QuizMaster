@@ -58,7 +58,7 @@ async function obtenerCategorias() {
   });
   return categorias;
 }
-
+//Cargar preguntas desde la base de datos
 window.addEventListener("DOMContentLoaded", async () => {
   const preguntasTableBody = document.querySelector(".preguntas");
   const searchForm = document.getElementById("searchForm");

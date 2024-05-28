@@ -11,7 +11,7 @@ firebase.initializeApp({
 
 const db = firebase.firestore();
 
-
+//Funcion para cerrar seccion y audio
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("regresarLobby").addEventListener("click", async (event) => {
       event.preventDefault();
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
         ico.src = "/Lobby/img/volume-mute-regular-24.png"
         }
     });
-
+    //Mostrar nombre de usuario
     const nombreUsuario =  localStorage.getItem("nameUserLogi");
     const name = document.getElementById("name-player");
     name.textContent = nombreUsuario;
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 });
-
+//Obtener datos de botones para el modo de juego categoria y dificultad
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll(".boton").forEach(function(boton) {
         boton.addEventListener("click", function() {
@@ -130,11 +130,9 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("niveldificultadregis").value = "";
             // Cerrar el modal
             document.getElementById("modalSug").style.display = "none";
-            // Mostrar un mensaje de éxito o realizar alguna otra acción si es necesario
         })
         .catch(function(error) {
             console.error("Error al agregar la pregunta sugerida: ", error);
-            // Manejar el error adecuadamente, como mostrar un mensaje de error al usuario
         });
     });
 });
