@@ -31,7 +31,7 @@ function respuestaIncorrecta() {
   actualizarVidas();
 
   if (vidas === 0) {
-    finDelJuego();
+    resFichas();
   }
 }
 
@@ -228,7 +228,19 @@ async function getUserData() {
     throw error;
   }
 }
-
+async function resFichas() {
+  try {
+    const userData = await getUserData(); 
+    const updateFichas = userData.fichas - 50; 
+    await db.collection("User").doc(userData.id).update({ 
+      fichas: updateFichas 
+    });
+    finDelJuego();
+  } catch (error) {
+    console.error("Error al restar fichas: ", error);
+    throw error;
+  }
+}
 async function addFichas(fichasToAdd) {
   try {
     const nombreUsuario = localStorage.getItem("nameUserLogi");
