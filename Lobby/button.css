@@ -105,37 +105,37 @@
 
 .boton.uno svg {
 	color: #fff;
-	width: 35px;
+	width: auto;
 	height: 35px;
 }
 .boton.dos svg {
 	color: #fff;
-	width: 35px;
+	width: auto;
 	height: 35px;
 }
 .boton.tres svg {
 	color: #fff;
-	width: 35px;
+	width: auto;
 	height: 35px;
 }
 .boton.cuatro svg {
 	color: #fff;
-	width: 35px;
+	width: auto;
 	height: 35px;
 }
 .boton.cinco svg {
 	color: #fff;
-	width: 35px;
+	width: auto;
 	height: 35px;
 }
 .boton.seis svg {
 	color: #fff;
-	width: 35px;
+	width: auto;
 	height: 35px;
 }
 .boton.siete svg {
 	color: #fff;
-	width: 35px;
+	width: auto;
 	height: 35px;
 }
 
@@ -145,50 +145,46 @@
 	background: #ff8a05;
 	background-image: url("img/hist.jpg");
 	height: 85px;
-	width: 375px;
+	width: auto;
 	
 }
 .boton.dos:hover {
 	background: #ff8a05;
 	background-image: url("img/geog.jpg");
 	height: 85px;
-	width: 375px;
+	width: auto;
 	
 }
 .boton.tres:hover {
 	background: #ff8a05;
 	background-image: url("img/fisica.jpg");
 	height: 85px;
-	width: 375px;
+	width: auto;
 
 }
 .boton.cuatro:hover {
 	background: #ff8a05;
 	background-image: url("img/mat.jpg");
 	height: 85px;
-	width: 375x;
+	width: auto;
 
 }
 .boton.cinco:hover {
 	background: #ff8a05;
 	background-image: url("img/dep.jpg");
 	height: 85px;
-	width: 375px;
+	width: auto;
 
 }
 .boton.seis:hover {
 	background: #ff8a05;
 	background-image: url("img/bio.jpg");
 	height: 85px;
-	width: 375px;
+	width: auto;
 
 }
 
-.boton.seis:hover {
-	background: #ff8a05;
-	height: 85px;
-	width: 375px;
-}
+
 
 
 .boton.uno:hover .icono {

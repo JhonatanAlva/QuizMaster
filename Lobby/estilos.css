@@ -18,15 +18,20 @@ body {
 }
 
 .contenedor {
-	width: 1200px;
+	text-align: center;
+  	padding: 20px;
+	align-items: center;
+	margin-top: 20px;
+}
+.contenedores {
+	width: 100%;
+	max-width: 1200px;
 	margin: auto;
-	padding: 100px 0;
+	padding: 50px 20px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
 }
-
 h1 {
 	font-size: 58px;
 	font-weight: 500;
@@ -46,8 +51,32 @@ h1 {
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 40px;
+	gap: 20px;
 }
+.modorandom{
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+.modorandom span{
+	transition: .4s ease-in-out all;
+	position: absolute;
+	left: 40%;
+	color: #fff;
+	width: 35px;
+}
+.modorandom button{
+	height: 85px;
+	width: 255px;
+}
+.modorandom button:hover{
+	background: #9fff05;
+	height: 85px;
+	width: 255px;
+}
+
 
 .boton {
 	display: inline-flex;
@@ -154,11 +183,11 @@ h1 {
 .name-players{
 	position: fixed;
 	padding: 10px ;
-	top: 2px;
+	top: 20px;
 	left: 10px;
 	font-size: 20px;
 	color: #52175e;
-  background: linear-gradient(to right, #FFFFFF, #FFEFBA); 
+  	background: linear-gradient(to right, #FFFFFF, #FFEFBA); 
 	border: 2px solid #055dff;
 	border-radius: 10px;
 }
@@ -188,4 +217,152 @@ h1 {
 }
 #totalFichas button {
 	padding: 3px 5px;
+}
+
+
+.sug{
+	background-color: #f84e73;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    padding: 15px 8px;
+    cursor: pointer
+}
+
+.sug {
+	position: fixed;
+	top: 500px;
+	left: 10px; 
+  }
+
+.sug:hover{
+	background-color: #2af102;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    padding: 15px 8px;
+    cursor: pointer
+}
+
+.modalSug {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para el modal de sugerencias */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
+}
+
+.modalSug {
+    width: 60%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff; 
+    text-align: center;
+}
+
+.modalSug label,
+.modalSug input,
+.modalSug select,
+.modalSug button {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.modalSug input,
+.modalSug select {
+    width: calc(100% - 20px); /* Resta el padding */
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#cerrarModalSug {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: #ff0000;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+
+.podiouser {
+    width: 60%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff; 
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; 
+}
+
+.forms-user {
+    margin: 0 auto; 
+    max-height: 200px; 
+    overflow-y: auto; 
+}
+
+#cerrarModalRank {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: #ff0000;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 99999; 
+}
+
+.ran{
+	background-color: #28cbd6;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    padding: 15px 8px;
+    cursor: pointer
+}
+
+.ran {
+	position: fixed;
+	top: 500px;
+	right: 20px; 
+  }
+
+.ran:hover{
+	background-color: #2af102;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    padding: 15px 8px;
+    cursor: pointer
 }

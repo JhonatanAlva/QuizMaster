@@ -51,7 +51,7 @@ body {
   background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);
   background: linear-gradient(to right, #FFFFFF, #FFEFBA); 
   border: 1px solid #701d1d;
-  height: 400px;
+  height: 550px;
   border-radius: 5px;
   margin-top: 90px;
   position: relative;
@@ -95,13 +95,13 @@ body {
 }
 
 .progress-container {
-  position: absolute; /* Use absolute positioning to stay within the parent container */
-  bottom: 50px; /* Adjust this value as needed */
+  position: absolute; 
+  bottom: 50px; 
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   display: flex;
-  justify-content: center; /* Center the progress bar horizontally */
+  justify-content: center;
 }
 
 .progress {
@@ -160,7 +160,7 @@ progress::-webkit-progress-value {
 	border-radius: 10px;
 	position: fixed;
 	top: 2px;
-	right: 100px; 
+	right: 150px; 
 	align-items: center; 
 }
 
@@ -250,3 +250,22 @@ progress::-webkit-progress-value {
   background-color: rgb(236, 22, 22);
   padding: 5px;
 }
+
+.audButton {
+	padding: 15px 15px;
+	font-size: 16px;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	background-color: #f8cb4e;
+	color: white;
+  }
+  
+.audButton {
+    position: fixed;
+    top: 3px;
+    right: 88px;
+}
+.audButton:hover {
+	background-color: #fab908;
+  }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+    <script src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vesper+Libre:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Quiz Master Control</title>
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+              <a class="nav-link" href="/Control/PanelControl/PanelControl.html">Ingresar preguntas</a>
+              <a class="nav-link" href="/Control/MostrarPreguntas/listadoPreguntas.html">Listar preguntas categoria</a>
+              <a class="nav-link" href="/LoginQuiz/loginQuiz.html">Salir</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <div class="container-form registerQuiz">
+        <div class="form-information">
+            <form class="forms">
+                
+                <h3>Ingrese la preguntar con su respectiva respuesta</h3>
+                <label>
+                    <input type="text" class="textbox" name="pregunta" id="preguntarregis" placeholder="Ingrese la pregunta">
+                </label>
+                <label>
+                    
+                    <input type="text" name="respuesta" id="respuestaregis" placeholder="Ingrese la respuesta">
+                </label>
+                <label> 
+                    <select id="categoriaregis" name="categoria" placeholder="Categoria correspondiente"></select>
+                    <button class="btn btn-success" type="button" id="addCategoryButton"> + </button>
+                </label>
+                <label>
+                    
+                    <input type="text" name="subcategoria" id="subcategoria" placeholder="Subcategoria de la pregunta">
+                </label>
+                <label>
+                    
+                    <input type="text" name="dificultad" id="niveldificultadregis" placeholder="Ingrese el nivel de dificultad">
+                </label>
+                <input type="submit" name="registrePregunta" id="buttonRegistrePregunta" value="Registrar">
+            </form>
+            
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+.boton.dos span {
+	transition: .4s ease-in-out all;
+	position: absolute;
+	left: 40%;
+}
+
+.boton.dos .icono {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	z-index: 2;
+	left: -40px;
+	transition: .3s ease-in-out all;
+	opacity: 0;
+}
+
+.boton.dos svg {
+	color: #fff;
+	width: 35px;
+	height: 35px;
+}
+
+.boton.dos:hover {
+	background: #ff8a05;
+	background-image: url("img/geog.jpg");
+	height: 85px;
+	width: 375px;
+
+}
+
+.boton.dos:hover .icono {
+	left: calc(100% - 50px);
+	opacity: 1;
+}
+
+.boton.dos:hover span {
+	left: 20px;
+}

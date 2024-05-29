@@ -11,18 +11,17 @@ firebase.initializeApp({
 
 const db = firebase.firestore();
 
-
+//Funcion para cerrar sesión y audio
 document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("regresarLobby").addEventListener("click", async (event) => {
-      event.preventDefault();
-      try {
-          window.location.href = "/LoginQuiz/LoginQuiz.html";
-      } catch (error) {
-          console.error("Error al salir ", error);
-          alert("Ocurrió un error al cerrar sesión");
-      }
-  });
-
+    document.getElementById("regresarLobby").addEventListener("click", async (event) => {
+        event.preventDefault();
+        try {
+            window.location.href = "/index.html";
+        } catch (error) {
+            console.error("Error al salir ", error);
+            alert("Ocurrió un error al cerrar sesión");
+        }
+    });
 
     const audio = document.getElementById("audio");
     audio.play();
@@ -31,28 +30,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
     toggleButton.addEventListener("click", function () {
         if (audio.paused) {
-        audio.play();
-        ico.src = "/Lobby/img/volume-full-regular-24.png"
+            audio.play();
+            ico.src = "/Lobby/img/volume-full-regular-24.png"
         } else {
-        audio.pause();
-        ico.src = "/Lobby/img/volume-mute-regular-24.png"
+            audio.pause();
+            ico.src = "/Lobby/img/volume-mute-regular-24.png"
         }
     });
 
+    //Mostrar nombre de usuario
     const nombreUsuario =  localStorage.getItem("nameUserLogi");
     const name = document.getElementById("name-player");
     name.textContent = nombreUsuario;
 
-
     const btnAddFichas = document.getElementById("add-fichas");
 
     btnAddFichas.addEventListener("click", function() {
-    mostrarMensajeFlotante("Para conseguir más monedas, juega en las diferentes categorias ");
+        mostrarMensajeFlotante("Para conseguir más monedas, juega en las diferentes categorias ");
     });
 
     function mostrarMensajeFlotante(mensaje) {
         alert(mensaje)
     }
+
     const querySnapshotNameUser = db.collection("User")
     .where("NameUser", "==", nombreUsuario)
     .get()
@@ -67,11 +67,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const errorFichas = 0;
         document.getElementById("fichas-cantidad").textContent = errorFichas;
     });
-
-
-
 });
 
+//Obtener datos de botones para el modo de juego categoria y dificultad
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll(".boton").forEach(function(boton) {
         boton.addEventListener("click", function() {
@@ -94,5 +92,97 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Mostrar el modal de sugerencias al hacer clic en el botón correspondiente
+    document.getElementById("sugModal").addEventListener("click", function() {
+        document.getElementById("modalSug").style.display = "block";
+    });
 
+    // Cerrar el modal de sugerencias al hacer clic en el botón de cierre
+    document.getElementById("cerrarModalSug").addEventListener("click", function() {
+        document.getElementById("modalSug").style.display = "none";
+    });
 
+    // Guardar la pregunta sugerida en Firestore al hacer clic en el botón de guardar
+    document.getElementById("buttonRegistrePregunta").addEventListener("click", function() {
+        const pregunta = document.getElementById("preguntarregis").value;
+        const respuesta = document.getElementById("respuestaregis").value;
+        const categoria = document.getElementById("categoria").value;
+        const subcategoria = document.getElementById("subcategoria").value;
+        const dificultad = document.getElementById("niveldificultadregis").value;
+
+        // Guardar en Firestore
+        db.collection("SugerPreguntas").add({
+            Pregunta: pregunta,
+            Respuesta: respuesta,
+            Categoria: categoria,
+            SubCategoria: subcategoria,
+            Dificultad: dificultad
+        })
+        .then(function(docRef) {
+            console.log("Pregunta sugerida guardada con ID: ", docRef.id);
+            // Restablecer los campos del formulario
+            document.getElementById("preguntarregis").value = "";
+            document.getElementById("respuestaregis").value = "";
+            document.getElementById("categoria").value = "";
+            document.getElementById("subcategoria").value = "";
+            document.getElementById("niveldificultadregis").value = "";
+            // Cerrar el modal
+            document.getElementById("modalSug").style.display = "none";
+        })
+        .catch(function(error) {
+            console.error("Error al agregar la pregunta sugerida: ", error);
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", async function() {
+    document.getElementById("podiouser").style.display = "none";
+    // Obtener los primeros 10 usuarios ordenados por la cantidad de fichas
+    
+    document.getElementById("rankingPoint").addEventListener("click", function() {
+        document.getElementById("podiouser").style.display = "block";
+    });
+
+    // Cerrar el modal de sugerencias al hacer clic en el botón de cierre
+    document.getElementById("cerrarModalRank").addEventListener("click", function() {
+        document.getElementById("podiouser").style.display = "none";
+    });
+
+    const users = await obtenerUsuarios();
+    actualizarTablaUsuarios(users);
+});
+
+async function obtenerUsuarios() {
+    try {
+        const userSnapshot = await db.collection("User")
+            .orderBy("fichas", "desc") 
+            .limit(10) 
+            .get();
+
+        const users = [];
+        userSnapshot.forEach(doc => {
+            users.push({ id: doc.id, ...doc.data() });
+        });
+        return users;
+    } catch (error) {
+        console.error("Error al obtener usuarios:", error);
+        return []; 
+    }
+}
+
+function actualizarTablaUsuarios(users) {
+    const userList = document.querySelector(".userList");
+    userList.innerHTML = "";
+    let posicion = 1;
+    users.forEach(user => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${posicion}</td>
+            <td>${user.NameUser}</td>
+            <td>${user.fichas}</td>
+        `;
+        userList.appendChild(row);
+        posicion++;
+    });
+}

@@ -1,0 +1,19 @@
+.container-fluid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+.img-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    margin-top: 20px;
+}
+
+.img-logo img {
+    max-width: 80%; 
+    height: auto; 
+}
