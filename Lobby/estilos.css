@@ -221,7 +221,7 @@ h1 {
 
 
 .sug{
-	background-color: #f8cb4e;
+	background-color: #f84e73;
     color: #ffffff;
     border-radius: 10px;
     border: none;
@@ -231,8 +231,8 @@ h1 {
 
 .sug {
 	position: fixed;
-	top: 20px;
-	left: 90px; 
+	top: 500px;
+	left: 10px; 
   }
 
 .sug:hover{
@@ -274,10 +274,10 @@ h1 {
 
 .modalSug {
     width: 60%;
-    max-width: 400px; /* Ajusta el ancho máximo según lo necesites */
+    max-width: 400px;
     padding: 20px;
     border-radius: 10px;
-    background-color: #fff; /* Fondo blanco */
+    background-color: #fff; 
     text-align: center;
 }
 
@@ -307,4 +307,62 @@ h1 {
     color: #ff0000;
     font-size: 20px;
     cursor: pointer;
+}
+
+
+
+.podiouser {
+    width: 60%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff; 
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; 
+}
+
+.forms-user {
+    margin: 0 auto; 
+    max-height: 200px; 
+    overflow-y: auto; 
+}
+
+#cerrarModalRank {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: #ff0000;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 99999; 
+}
+
+.ran{
+	background-color: #28cbd6;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    padding: 15px 8px;
+    cursor: pointer
+}
+
+.ran {
+	position: fixed;
+	top: 500px;
+	right: 20px; 
+  }
+
+.ran:hover{
+	background-color: #2af102;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    padding: 15px 8px;
+    cursor: pointer
 }
