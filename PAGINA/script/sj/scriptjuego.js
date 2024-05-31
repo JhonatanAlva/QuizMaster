@@ -1,3 +1,4 @@
+//coonexion de base de datos
 firebase.initializeApp({
   apiKey: "AIzaSyB6TK0bHCk35TeAbe0BqMGHWLxfjfEdGbI",
   authDomain: "quizmaster-38a6b.firebaseapp.com",
@@ -31,7 +32,7 @@ function respuestaIncorrecta() {
   actualizarVidas();
 
   if (vidas === 0) {
-    finDelJuego();
+    resFichas();
   }
 }
 
@@ -62,7 +63,7 @@ var nombreUsuario = localStorage.getItem("nameUserLogi");
 window.addEventListener("DOMContentLoaded", function () {
   mostrarNombreUsuario(nombreUsuario);
 });
-
+//Guardar preguntas obtenidas
 const preguntasCollection = db.collection("Preguntas");
 let preguntas = [];
 let preguntaIndex = 0;
@@ -228,7 +229,19 @@ async function getUserData() {
     throw error;
   }
 }
-
+async function resFichas() {
+  try {
+    const userData = await getUserData(); 
+    const updateFichas = userData.fichas - 50; 
+    await db.collection("User").doc(userData.id).update({ 
+      fichas: updateFichas 
+    });
+    finDelJuego();
+  } catch (error) {
+    console.error("Error al restar fichas: ", error);
+    throw error;
+  }
+}
 async function addFichas(fichasToAdd) {
   try {
     const nombreUsuario = localStorage.getItem("nameUserLogi");

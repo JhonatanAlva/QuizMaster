@@ -29,6 +29,16 @@
 	<div id="name-player" class="name-players">
 		<h1></h1>
 	</div>
+	<div class="sugerencias">
+		<button class="sug" id="sugModal">
+			<i class="bx">Sugerencia Pregunta</i>
+		</button>
+	</div>
+	<div class="punteo">
+		<button class="ran" id="rankingPoint">
+			<i class="bs">Ranking</i>
+		</button>
+	</div>
 	<div id="totalFichas" class="fichasplayer">
 		<img src="/Lobby/img/dolar.png" alt="" height="30">
 		<p id="fichas-cantidad"> </p>
@@ -118,6 +128,50 @@
 				<button class="dificultad" id="Dificil">Difícil</button>
 			</div>
 		</div>
+		<div class="modal-content">
+			<div class="modalSug" id="modalSug">
+				<h3>Ingrese la pregunta con su respectiva respuesta</h3>
+				<label>
+					<input type="text" class="textbox" name="pregunta" id="preguntarregis" placeholder="Ingrese la pregunta">
+				</label>
+				<label>
+					<input type="text" name="respuesta" id="respuestaregis" placeholder="Ingrese la respuesta">
+				</label>
+				<label>
+					<input type="text" name="categoria" id="categoria" placeholder="Categoria de la pregunta">
+				</label>
+				<label>
+					<input type="text" name="subcategoria" id="subcategoria" placeholder="Subcategoria de la pregunta">
+				</label>
+				<label>
+					<input type="text" name="dificultad" id="niveldificultadregis" placeholder="Ingrese el nivel de dificultad">
+				</label>
+				<input type="submit" name="registrePregunta" id="buttonRegistrePregunta" value="Registrar">
+				<button id="cerrarModalSug" type="button">X</button> 
+			</div>
+		</div>
+
+		<div class="podiouser-content">
+			<div class="podiouser" id="podiouser">
+				<h3>Clasificatorio</h3>
+				<div class="forms-user">
+					<table>
+						<thead>
+							<tr>
+								<th>Posicion</th>
+								<th>Nombre</th>
+								<th>Fichas</th>
+							</tr>
+						</thead>
+						<tbody class="userList">
+							
+						</tbody>
+					</table>
+				</div> 
+				<button id="cerrarModalRank" type="button">X</button> 
+			</div>
+		</div>
+		
 </body>
 
 </html>
